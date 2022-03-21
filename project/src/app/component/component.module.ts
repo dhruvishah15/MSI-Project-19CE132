@@ -10,13 +10,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatError } from '@angular/material/form-field';
+import { MatCommonModule } from '@angular/material/core';
 
 
 @NgModule({
   declarations: [
-    UserManagementComponent
+    LogInComponent,
   ],
   imports: [
+    MatCommonModule,
     CommonModule,
     MatTableModule,
     FormsModule,
@@ -26,7 +29,9 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatCardModule,
     MatIconModule,
-    MatSelectModule
-  ]
+    MatSelectModule,
+    MatError
+  ],
+
 })
 export class ComponentModule { }
