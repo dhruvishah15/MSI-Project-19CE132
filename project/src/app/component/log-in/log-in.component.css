@@ -3,21 +3,22 @@ body {
     font-family: Roboto, sans-serif;    
 }    
 
-.container{
+.container-1{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-image: url('/assets/bg.jpg');
+    background-image: url('/assets/bg.jpg');
     background-repeat: no-repeat;
-    background-size: cover;  */
+    background-size: cover; 
+    
     /* padding-top: 100px; */
-    background-color: #3f51b5;   
+    /* background-color: #3f51b5;    */
 }
 
 .mat-card {    
     text-align: -webkit-center;  
-    width: 350px; 
+    width: 372px; 
     padding-bottom: 35px;  
     display: block;
     margin-left: auto;

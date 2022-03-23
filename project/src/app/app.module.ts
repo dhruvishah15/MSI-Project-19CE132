@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +18,6 @@ import { LogInComponent } from './component/log-in/log-in.component';
 import { UserManagementComponent } from './component/user-management/user-management.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
-
 
 @NgModule({
   declarations: [
@@ -45,7 +43,7 @@ import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
     HttpClientModule,
     CommonModule,
     MatToolbarModule,
- 
+
   ],
   providers: [],
   bootstrap: [AppComponent]

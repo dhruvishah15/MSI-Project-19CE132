@@ -13,7 +13,9 @@ export class LogInComponent implements OnInit {
 
   loginForm: FormGroup;
   hide = true;
-  
+  message: any;
+  showError: boolean = false;
+
   constructor(private router: Router, private fb: FormBuilder, private authService : AuthService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,9 +31,15 @@ export class LogInComponent implements OnInit {
         this.router.navigate(["/dashboard"]);
       },
       err =>{ 
+        this.showError = true;
+        this.message = err.error.message;
         console.log(err.error.message);
       }
     )
+  }
+
+  reloadCurrentPage() {
+    window.location.reload();
   }
 
   // onClear() {

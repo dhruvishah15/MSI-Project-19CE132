@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container-1">
     <mat-card>
       <img mat-card-image
         src="/assets/logo.png"
@@ -46,7 +46,12 @@
             
           </mat-card-content>  
         <button class="b1" mat-raised-button color="black" [disabled]="!loginForm.valid" (click)="onSubmit()">Log In</button>   
-        
+        <mat-error *ngIf="showError">
+          <div class="alert alert-danger alert-dismissible">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+        </div> 
+        </mat-error>
         <br>
         Don't have an account? <a href="">Contact Admin</a>
   </mat-card>   
