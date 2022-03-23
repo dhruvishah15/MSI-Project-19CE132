@@ -15,5 +15,8 @@
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.4"
   }
 }

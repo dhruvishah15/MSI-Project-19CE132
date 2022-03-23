@@ -24,6 +24,7 @@ export class AuthService {
   setToken(token:string){
     sessionStorage.setItem("token",token);
   }
+  
   getToken(){
     return sessionStorage.getItem("token");
   }

@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css']
 })
+
 export class LogInComponent implements OnInit {
 
   loginForm: FormGroup;
-
+  hide = true;
+  
   constructor(private router: Router, private fb: FormBuilder, private authService : AuthService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -24,7 +26,7 @@ export class LogInComponent implements OnInit {
     this.authService.loginUser({email,password}).subscribe(
       res => {
         this.authService.setToken(res.token);
-        this.router.navigate(["/usermanagement"]);
+        this.router.navigate(["/dashboard"]);
       },
       err =>{ 
         console.log(err.error.message);
@@ -32,13 +34,12 @@ export class LogInComponent implements OnInit {
     )
   }
 
-  onClear() {
-    this.loginForm.reset();
-  }
+  // onClear() {
+  //   this.loginForm.reset();
+  // }
 
   ngOnInit(): void {
     console.log("Login Form");
   }
-
 
 }

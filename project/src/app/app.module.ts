@@ -17,13 +17,16 @@ import { AuthService } from './services/auth.service';
 import { CommonModule } from '@angular/common';
 import { LogInComponent } from './component/log-in/log-in.component';
 import { UserManagementComponent } from './component/user-management/user-management.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    DashboardComponent
   
   ],
   imports: [
@@ -40,7 +43,9 @@ import { UserManagementComponent } from './component/user-management/user-manage
     MatIconModule,
     MatSelectModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    MatToolbarModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

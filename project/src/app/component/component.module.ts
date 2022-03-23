@@ -12,11 +12,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatError } from '@angular/material/form-field';
 import { MatCommonModule } from '@angular/material/core';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
   declarations: [
-    LogInComponent,
+    // LogInComponent,
+  
+    DashboardComponent
   ],
   imports: [
     MatCommonModule,
@@ -30,7 +34,9 @@ import { MatCommonModule } from '@angular/material/core';
     MatCardModule,
     MatIconModule,
     MatSelectModule,
-    MatError
+    MatError,
+    MatToolbarModule,
+
   ],
 
 })

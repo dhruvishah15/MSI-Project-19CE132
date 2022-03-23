@@ -1,41 +1,53 @@
+
 <div class="container">
-  <mat-card>    
-      <!-- Title of an Card -->    
-      <mat-card-title>Welcome Back!</mat-card-title>  
-      <br/>  
-      <mat-card-content>    
-        <form [formGroup]="loginForm">    
-          <table>     
-            <tr>    
-              <td>    
-                <mat-form-field appearance="outline">
-                <mat-label>Enter your email</mat-label>
-                <input matInput formControlName="email" placeholder="">
-                <mat-error *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].hasError('required')"> 
-                  Email Id is required!
-                </mat-error>
-                <mat-error *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].hasError('email')"> 
-                  Email Id is invalid!
-                </mat-error>
-                <!-- <mat-hint>Email</mat-hint> -->
-                </mat-form-field> 
-              </td>   
-            </tr>    
-            <tr>   
-              <td>    
-                <mat-form-field appearance="outline">
-                <mat-label>Enter your password</mat-label>
-                <input matInput formControlName="password" placeholder="" type="password">
-                <mat-error *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].hasError('required')"> 
-                  Password is required!
-                </mat-error>
-                <!-- <mat-hint>Password</mat-hint> -->
-                </mat-form-field>
+    <mat-card>
+      <img mat-card-image
+        src="/assets/logo.png"
+        alt="MSI Logo">
+        <!-- Title of an Card -->    
+        <mat-card-title><b>LOG IN</b></mat-card-title>  
+        <br/>  
+        <mat-card-content>    
+          <form [formGroup]="loginForm">    
+            <table>     
+              <tr>    
+                <td>    
+                  <mat-form-field appearance="outline">
+                  <mat-icon matPrefix> mail </mat-icon>
+                  <mat-label>&nbsp;&nbsp;Email Id</mat-label>
+                  <input matInput formControlName="email" placeholder="">
+                  
+                  <mat-error *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].hasError('required')"> 
+                    Email Id is required
+                  </mat-error>
+                  <mat-error *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].hasError('email')"> 
+                    Email Id is invalid
+                  </mat-error>
+                  <!-- <mat-hint>Email</mat-hint> -->
+                  </mat-form-field> 
                 </td>   
-            </tr>    
-          </table>    
-          </form>    
-        </mat-card-content>  
-      <button class="b1" mat-raised-button color="primary" (click)="onSubmit()">Login</button>   
+              </tr>    
+              <tr>   
+                <td>    
+                  <mat-form-field appearance="outline">
+                  <mat-icon matPrefix> password </mat-icon>
+                  <mat-label>&nbsp;&nbsp;Password</mat-label>
+                  <input matInput formControlName="password" placeholder="" [type]="hide ? 'password' : 'text'">
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  <mat-error *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].hasError('required')"> 
+                    Password is required
+                  </mat-error>
+                  <!-- <mat-hint>Password</mat-hint> -->
+                  </mat-form-field>
+                  </td>   
+              </tr>    
+            </table>    
+            </form>    
+            
+          </mat-card-content>  
+        <button class="b1" mat-raised-button color="black" [disabled]="!loginForm.valid" (click)="onSubmit()">Log In</button>   
+        
+        <br>
+        Don't have an account? <a href="">Contact Admin</a>
   </mat-card>   
 </div>

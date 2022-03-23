@@ -76,17 +76,17 @@ class userManagement{
                       let token = jwt.sign({ username: userData.email }, privateKey, {
                         expiresIn: "3h",
                       });
-                      console.log("HI");
                       response.status(200).send({ message: "Login Successful", token: token });
-                    } else {
-                      response.status(401).json({ message: "Email or Password is wrong" });
+                    } 
+                    else {
+                       response.status(401).json({ message: "Incorrect Email or Password" });
                     }
                   }
                 }
             );
 
          }else{
-          return response.status(401).json({"message":"username or passsword not found"})
+          return response.status(401).json({message: "username or passsword not found"})
         }
     }
 
