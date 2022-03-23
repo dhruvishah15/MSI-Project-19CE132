@@ -79,7 +79,7 @@ class userManagement{
                       response.status(200).send({ message: "Login Successful", token: token });
                     } 
                     else {
-                       response.status(401).json({ message: "Incorrect Email or Password" });
+                      response.status(401).json({ message: "Incorrect Email or Password" });
                     }
                   }
                 }
@@ -89,7 +89,6 @@ class userManagement{
           return response.status(401).json({message: "username or passsword not found"})
         }
     }
-
 }
 
 
