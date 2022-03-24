@@ -76,7 +76,8 @@ class userManagement{
                       let token = jwt.sign({ username: userData.email }, privateKey, {
                         expiresIn: "3h",
                       });
-                      response.status(200).send({ message: "Login Successful", token: token });
+                      let privilege = userData.privilege;
+                      response.status(200).send({ message: "Login Successful", token: token, privilege: privilege });
                     } 
                     else {
                       response.status(401).json({ message: "Incorrect Email or Password" });

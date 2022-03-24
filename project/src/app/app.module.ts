@@ -16,15 +16,17 @@ import { AuthService } from './services/auth.service';
 import { CommonModule } from '@angular/common';
 import { LogInComponent } from './component/log-in/log-in.component';
 import { UserManagementComponent } from './component/user-management/user-management.component';
-import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
+import { UserDashboardComponent } from './component/user-dashboard/user-dashboard.component';
+import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    UserManagementComponent,
-    DashboardComponent
+    UserManagementComponent,   
+    UserDashboardComponent,
+    AdminDashboardComponent
   
   ],
   imports: [

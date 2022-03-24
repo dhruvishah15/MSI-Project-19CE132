@@ -28,4 +28,12 @@ export class AuthService {
   getToken(){
     return sessionStorage.getItem("token");
   }
+
+  setPrivilege(privilege:string){
+    return sessionStorage.setItem("privilege",privilege);
+  }
+
+  getPrivilege(){
+    return sessionStorage.getItem("privilege");
+  }
 }

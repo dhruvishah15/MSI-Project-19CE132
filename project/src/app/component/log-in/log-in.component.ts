@@ -28,7 +28,14 @@ export class LogInComponent implements OnInit {
     this.authService.loginUser({email,password}).subscribe(
       res => {
         this.authService.setToken(res.token);
-        this.router.navigate(["/dashboard"]);
+        this.authService.setPrivilege(res.privilege);
+        let priv = this.authService.getPrivilege();
+        if(priv == "1"){
+          this.router.navigate(["/admin-dashboard"]);
+        }else if(priv == "2"){
+          this.router.navigate(["/user-dashboard"])
+        }
+        
       },
       err =>{ 
         this.showError = true;
