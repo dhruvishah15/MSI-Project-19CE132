@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./log-in.component.css']
 })
 
-export class LogInComponent implements OnInit {
+export class LogInComponent implements OnInit{
 
   loginForm: FormGroup;
   hide = true;
@@ -34,8 +34,7 @@ export class LogInComponent implements OnInit {
           this.router.navigate(["/admin-dashboard"]);
         }else if(priv == "2"){
           this.router.navigate(["/user-dashboard"])
-        }
-        
+        }   
       },
       err =>{ 
         this.showError = true;

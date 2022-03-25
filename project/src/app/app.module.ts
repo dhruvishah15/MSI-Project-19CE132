@@ -12,13 +12,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { AuthService } from './services/auth.service';
 import { CommonModule } from '@angular/common';
 import { LogInComponent } from './component/log-in/log-in.component';
 import { UserManagementComponent } from './component/user-management/user-management.component';
-import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { UserDashboardComponent } from './component/user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashb
     MatToolbarModule,
 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
