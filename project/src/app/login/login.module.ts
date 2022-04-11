@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LogInComponent } from './log-in/log-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,15 +14,13 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 
-
 @NgModule({
   declarations: [
-    // LogInComponent,
-  
+    //LogInComponent
   ],
   imports: [
-    MatCommonModule,
     CommonModule,
+    MatCommonModule,
     MatTableModule,
     FormsModule,
     ReactiveFormsModule,
@@ -33,8 +32,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSelectModule,
     MatError,
     MatToolbarModule
-
-  ],
-
+  ]
 })
-export class ComponentModule { }
+export class LoginModule { }

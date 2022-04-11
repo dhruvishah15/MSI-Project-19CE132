@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService,private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -16,9 +16,6 @@ export class AuthGuard implements CanActivate {
         console.log('User not logged in');
         this.router.navigate(['/']);
         return false;
-      }
-      if(sessionStorage.getItem('privilege')=='1'){
-
       }
               
       return true;

@@ -8,8 +8,7 @@ import { CanActivate, Router } from '@angular/router';
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css']
 })
-
-export class LogInComponent implements OnInit{
+export class LogInComponent implements OnInit {
 
   loginForm: FormGroup;
   hide = true;
@@ -31,7 +30,7 @@ export class LogInComponent implements OnInit{
         this.authService.setPrivilege(res.privilege);
         let priv = this.authService.getPrivilege();
         if(priv == "1"){
-          this.router.navigate(["/admin-dashboard"]);
+          this.router.navigate(["/admin-dashboard/project-mapping"]);
         }else if(priv == "2"){
           this.router.navigate(["/user-dashboard"])
         }   
@@ -55,5 +54,6 @@ export class LogInComponent implements OnInit{
   ngOnInit(): void {
     console.log("Login Form");
   }
+
 
 }

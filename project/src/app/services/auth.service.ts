@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,18 +8,14 @@ import { CanActivate } from '@angular/router';
 export class AuthService{
 
   private loginURL = "http://localhost:3000/login";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   loginUser(user:{}){
     return this.http.post<any>(this.loginURL,user);
   }
 
-  logout(){
-    sessionStorage.removeItem("token");
-  }
-
   isLoggedIn(){
-    return !!sessionStorage.getItem("token");
+    return sessionStorage.getItem("token") != null;;
   }
 
   setToken(token:string){
@@ -37,4 +33,10 @@ export class AuthService{
   getPrivilege(){
     return sessionStorage.getItem("privilege");
   }
+
+  logout(){
+    sessionStorage.removeItem("token");
+    this.router.navigate(["/login"]);
+  }
+
 }

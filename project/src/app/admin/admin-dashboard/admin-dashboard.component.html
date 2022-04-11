@@ -1,0 +1,56 @@
+<mat-toolbar>
+  Admin Dashboard
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened="true" class="mat-elevation-z8">
+
+    <img class="avatar mat-elevation-z8" src="https://images.unsplash.com/photo-1628260412297-a3377e45006f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhcnRvb258ZW58MHx8MHx8&w=1000&q=80" />
+
+    <h4 class="name">Admin</h4>
+    <p class="email">admin@gmail.com</p>
+
+    <mat-divider></mat-divider>
+   
+    <button mat-button [routerLink]="'/admin-dashboard/project-mapping'" class="menu-button">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+
+    <button mat-button [routerLink]="'/admin-dashboard/add-project-mapping'" class="menu-button">
+      <mat-icon>add</mat-icon>
+      <span>Add New Project</span>
+    </button>
+    <button mat-button [routerLink]="'/admin-dashboard/user-registration'" class="menu-button">
+      <mat-icon>person_add</mat-icon>
+      <span>Add New User</span>
+    </button>
+    <button mat-button class="menu-button">
+      <mat-icon> people</mat-icon>
+      <span>View Users</span>
+    </button>
+    <button mat-button class="menu-button">
+      <mat-icon> import_export</mat-icon>
+      <span>Bulk Operations</span>
+    </button>
+    <button mat-button class="menu-button" (click)="logOut()">
+      <mat-icon>logout</mat-icon>
+      <span>Log Out</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+    </button>
+  </mat-sidenav>
+      
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+        <!-- Main content here! -->
+        <router-outlet></router-outlet>
+      
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

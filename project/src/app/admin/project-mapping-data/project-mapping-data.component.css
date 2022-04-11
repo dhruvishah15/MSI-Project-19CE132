@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+    padding: 20px;
+}
+
+.content-table{
+    padding: 20px;
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 2rem;
+}
+
+.text-center{
+    color: black;
+    text-emphasis: none;
+}

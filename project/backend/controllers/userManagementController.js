@@ -11,7 +11,7 @@ class userManagement{
     }
 
     register = (request, response) => {
-        let {email, password} = request.body;
+        let {name, email, password, privilege} = request.body;
         if(email && password){
             // we need to check if the user already exists
             client.query(
@@ -19,29 +19,29 @@ class userManagement{
                 (err, resp) => {
                   // console.log(resp.rows);
                   if (err) {
-                    res.status(400).send("database error!");
+                     response.status(400).send({message: "database error!"});
                   } else if (resp.rows.length >= 1) {
-                    res.status(404).send("User already exists");
+                     response.status(404).send({message: "User already exists"});
                   }
                 }
               );
 
             let hashed_password = bcrypt.hashSync(password,12);
             client.query(
-                `insert into users (email,password) values($1,$2)`, [email, hashed_password],
+                `insert into users (name,email,password,privilege) values($1,$2,$3,$4)`, [name,email, hashed_password, privilege],
                 (err, resp) => {
                   // console.log(resp);
                   if (err) {
                     console.log(err);
-                    res.status(400).send("Registration Failed. Please try again.");
+                    response.status(400).send({message: "Registration Failed. Please try again."});
                   } else {
                     console.log("New user inserted");
-                    res.status(200).send("Registration Successfull");
+                    response.status(200).send({message: "Registration Successful"});
                   }
                 }
               );    
         }else{
-            return response.status(401).send("Username or Passsword not found");
+            return response.status(401).send({message: "Username or Passsword not found"});
         }
     }
 
@@ -67,7 +67,7 @@ class userManagement{
                     if (err) {
                         response.status(400).json({ message: "database error" });
                     } else if (resp.rows.length == 0) {
-                        response.status(404).json({ message: "User does not exist" });
+                        response.status(404).json({ message: "User is not registered" });
                     } else {
                     let userData = resp.rows[0];
                     var check = bcrypt.compareSync(password, userData.password);
@@ -80,7 +80,7 @@ class userManagement{
                       response.status(200).send({ message: "Login Successful", token: token, privilege: privilege });
                     } 
                     else {
-                      response.status(401).json({ message: "Incorrect Email or Password" });
+                      response.status(401).json({ message: "Incorrect Password" });
                     }
                   }
                 }
@@ -91,6 +91,5 @@ class userManagement{
         }
     }
 }
-
 
 module.exports = userManagement;

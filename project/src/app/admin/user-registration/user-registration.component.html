@@ -1,0 +1,100 @@
+<div class="container-1">
+    <mat-card>
+        <!-- Title of an Card -->    
+        <mat-card-title><b>USER REGISTRATION</b></mat-card-title>  
+        <br/>  
+        <mat-card-content>    
+          <form [formGroup]="registrationForm">    
+            <table>  
+                <tr>    
+                  <td>    
+                    <mat-form-field appearance="fill">
+                      <mat-label>Privilege</mat-label>
+                      <mat-select name="privilege" formControlName="privilege" (change)="changePrivilege($event)">
+                        <ng-container *ngFor="let privilege of privileges">
+                          <mat-option value="{{privilege.key}}">{{privilege.privilegeValue}}</mat-option>
+                        </ng-container>
+                      </mat-select>
+                    </mat-form-field>
+                  </td>   
+                </tr>  
+                <tr>    
+                  <td>    
+                    <mat-form-field appearance="outline">
+                    <mat-icon matPrefix> person </mat-icon>
+                    <mat-label>&nbsp;&nbsp;Name</mat-label>
+                    <input matInput formControlName="name" placeholder="">
+                    
+                    <mat-error *ngIf="registrationForm.controls['name'].errors && registrationForm.controls['name'].hasError('required')"> 
+                      Name is required
+                    </mat-error>
+                    <!-- <mat-hint>Email</mat-hint> -->
+                    </mat-form-field> 
+                  </td>   
+                </tr>         
+              <tr>    
+                <td>    
+                  <mat-form-field appearance="outline">
+                  <mat-icon matPrefix> mail </mat-icon>
+                  <mat-label>&nbsp;&nbsp;Email Id</mat-label>
+                  <input matInput formControlName="email" placeholder="">
+                  
+                  <mat-error *ngIf="registrationForm.controls['email'].errors && registrationForm.controls['email'].hasError('required')"> 
+                    Email Id is required
+                  </mat-error>
+                  <mat-error *ngIf="registrationForm.controls['email'].errors && registrationForm.controls['email'].hasError('email')"> 
+                    Email Id is invalid
+                  </mat-error>
+                  <!-- <mat-hint>Email</mat-hint> -->
+                  </mat-form-field> 
+                </td>   
+              </tr>    
+              <tr>   
+                <td>    
+                  <mat-form-field appearance="outline">
+                  <mat-icon matPrefix> password </mat-icon>
+                  <mat-label>&nbsp;&nbsp;Password</mat-label>
+                  <input matInput formControlName="password" placeholder="" [type]="hide ? 'password' : 'text'">
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  <mat-error *ngIf="registrationForm.controls['password'].errors && registrationForm.controls['password'].hasError('required')"> 
+                    Password is required
+                  </mat-error>
+                  <!-- <mat-hint>Password</mat-hint> -->
+                  </mat-form-field>
+                  </td>   
+              </tr>    
+              <tr>   
+                <td>    
+                  <mat-form-field appearance="outline">
+                  <mat-icon matPrefix> password </mat-icon>
+                  <mat-label>&nbsp;&nbsp;Confirm Password</mat-label>
+                  <input matInput formControlName="confirm_password" placeholder="" [type]="hide ? 'password' : 'text'">
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  <mat-error *ngIf="registrationForm.controls['confirm_password'].errors && registrationForm.controls['confirm_password'].hasError('required')"> 
+                    Again Password is required
+                  </mat-error>
+                  <mat-error *ngIf="registrationForm.controls['confirm_password'].hasError('NoPassswordMatch')"> 
+                    Password does not match
+                  </mat-error>
+                  <!-- <mat-hint>Password</mat-hint> -->
+                  </mat-form-field>
+                  </td>   
+              </tr>   
+               
+            </table>    
+            </form>    
+            
+          </mat-card-content>  
+        <button class="b1" mat-raised-button color="black" (click)="onSubmit()" [disabled]="!registrationForm.valid" >Register</button>   
+        <mat-error *ngIf="showError">
+          <div class="alert alert-danger alert-dismissible">  
+            {{message}} 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+        </div> 
+        </mat-error>
+        <br>
+       
+  </mat-card>   
+</div>
+
+

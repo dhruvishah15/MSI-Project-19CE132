@@ -12,27 +12,39 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider'
 import { CommonModule } from '@angular/common';
-import { LogInComponent } from './component/log-in/log-in.component';
-import { UserManagementComponent } from './component/user-management/user-management.component';
+import { LogInComponent } from './login/log-in/log-in.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { UserDashboardComponent } from './component/user-dashboard/user-dashboard.component';
-import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { RouterModule } from '@angular/router';
+import { UserRegistrationComponent } from './admin/user-registration/user-registration.component';
+import { ProjectMappingDataComponent } from './admin/project-mapping-data/project-mapping-data.component';
+import { AddProjectMappingDataComponent } from './admin/add-project-mapping-data/add-project-mapping-data.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogInComponent,
-    UserManagementComponent,   
-    UserDashboardComponent,
-    AdminDashboardComponent
-  
+    LogInComponent, 
+    UserDashboardComponent, 
+    AdminDashboardComponent,
+    UserRegistrationComponent,
+    ProjectMappingDataComponent,
+    AddProjectMappingDataComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    RouterModule,
     MatTableModule,
     FormsModule,
     ReactiveFormsModule,
@@ -45,7 +57,13 @@ import { AuthGuard } from './guards/auth.guard';
     HttpClientModule,
     CommonModule,
     MatToolbarModule,
-
+    MatTooltipModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatPaginatorModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
