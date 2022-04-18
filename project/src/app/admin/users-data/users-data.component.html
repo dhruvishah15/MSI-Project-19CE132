@@ -1,0 +1,38 @@
+<div class="content-table">
+    <h2 class="text-center"> User Details</h2>
+    <table mat-table [dataSource]="dataSource">
+      
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="privilege">
+        <th mat-header-cell *matHeaderCellDef> Privilege </th>
+        <td mat-cell *matCellDef="let element"> {{element.privilege}} </td>
+      </ng-container>
+  
+     
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element"> 
+          <button mat-raised-button color="warn" class="action-link" (click)="deleteUser(element.id)">Remove User</button></td>
+      </ng-container> 
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[9, 10]" showFirstLastButtons aria-label="Select page of user elements">
+    </mat-paginator>
+  </div>

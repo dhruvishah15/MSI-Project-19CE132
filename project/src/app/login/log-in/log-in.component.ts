@@ -28,11 +28,13 @@ export class LogInComponent implements OnInit {
       res => {
         this.authService.setToken(res.token);
         this.authService.setPrivilege(res.privilege);
+        this.authService.setName(res.name);
+        this.authService.setEmail(res.email);
         let priv = this.authService.getPrivilege();
         if(priv == "1"){
           this.router.navigate(["/admin-dashboard/project-mapping"]);
         }else if(priv == "2"){
-          this.router.navigate(["/user-dashboard"])
+          this.router.navigate(["/user-dashboard/view-project-mapping"]);
         }   
       },
       err =>{ 

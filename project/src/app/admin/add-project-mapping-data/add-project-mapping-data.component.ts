@@ -27,6 +27,7 @@ export class AddProjectMappingDataComponent implements OnInit {
   hide = true;
   message: any;
   showError: boolean = false;
+  success: boolean = false;
 
   ngOnInit(): void {
   }
@@ -34,7 +35,7 @@ export class AddProjectMappingDataComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   userCtrl = new FormControl();
   filteredUsers: Observable<string[]>;
-  users: string[] = ['Admin'];
+  users: string[] = [];
   allUsers: string[] = ['Admin','User1', 'User2', 'User3', 'User4', 'User5'];
 
   status: Status[] = [
@@ -63,11 +64,14 @@ export class AddProjectMappingDataComponent implements OnInit {
   }
 
   onSubmit(){
-    const {projectName,deptCode,users,product,status,cieAreaId,financeProductId} = this.addProjectForm.value;
+    this.addProjectForm.controls['users'].setValue(this.users);
+    let {projectName,deptCode,users,product,status,cieAreaId,financeProductId} = this.addProjectForm.value;
     console.log(users);
     
     this.projectService.addProject({projectName,deptCode,users,product,status,cieAreaId,financeProductId}).subscribe(
       resp => {
+        this.success = true;
+        this.message = "Project Details Added Succesfully"
         console.log(JSON.stringify(this.addProjectForm.value));
       },
       err =>{ 
@@ -77,6 +81,10 @@ export class AddProjectMappingDataComponent implements OnInit {
       }
     )
 
+  }
+
+  reloadCurrentPage() {
+    window.location.reload();
   }
 
   stat: any= [true, false];
@@ -104,6 +112,7 @@ export class AddProjectMappingDataComponent implements OnInit {
     if (index >= 0) {
       this.users.splice(index, 1);
     }
+    
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {

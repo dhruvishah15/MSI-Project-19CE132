@@ -85,14 +85,17 @@
             </form>    
             
           </mat-card-content>  
+          
         <button class="b1" mat-raised-button color="black" (click)="onSubmit()" [disabled]="!registrationForm.valid" >Register</button>   
-        <mat-error *ngIf="showError">
-          <div class="alert alert-danger alert-dismissible">  
-            {{message}} 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
-        </div> 
-        </mat-error>
         <br>
+        <div *ngIf="showError" class="alert alert-danger alert-dismissible">  
+          {{message}} &nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+        </div> 
+        <div *ngIf="success" class="alert alert-success alert-dismissible">
+          User Registration Successful. &nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+        </div>
        
   </mat-card>   
 </div>

@@ -1,0 +1,35 @@
+<form class="form file__upload__form" [formGroup] = "uploadForm">
+  <div class="form__group">
+    <label for="series">
+      <div class="form__input__custom">
+        <!-- <img
+          class="form__upload__icon"
+          src="../assets/upload.svg"
+          alt="upload"
+        /> -->
+        <span>Choose a file to bulk import project mapping data</span>
+      </div>
+    </label>
+    <div class="form__input__hint" *ngIf="!fileName">File format: csv</div>
+    <div class="form__input__hint" *ngIf="fileName">{{ fileName }}</div>
+    <div class="form__input__error" *ngIf="!fileTypeValid">
+      Please select valid file(*.csv)
+    </div>
+    <input type="file" name="projectData" class="form__input form__input--file" id="series" (change)="onFileSelect($event)" accept=".csv"/>
+  </div>
+  <div class="form__group">
+    <button type="button" class="button button--primary" (click)="uploadFormSubmit()">
+      Upload
+    </button>
+  </div>
+  <div class="container-1">
+    <div *ngIf="showError" class="alert alert-danger alert-dismissible">  
+      {{message}} &nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+    </div> 
+    <div *ngIf="success" class="alert alert-success alert-dismissible">
+      Bulk Import Successful &nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+  </div>
+  </div>
+</form>

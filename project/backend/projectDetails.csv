@@ -1,0 +1,11 @@
+projectname,deptcode,users,product,status,updatedat,createdat,cieareaid,financeproductid
+System 1,AB1234,"{""user11"",""user2""}",AWS,TRUE,2022-04-12T04:05:47.330Z,2022-04-11T09:36:27.459Z,20,30
+System 2,AB123,"{""user12"",""user2""}",AWS,TRUE,2022-04-12T04:17:36.025Z,2022-04-12T04:17:36.025Z,20,30
+System 3,AB12,"{""user1"",""user22""}",desktop app,TRUE,2022-04-12T04:32:48.764Z,2022-04-12T04:32:48.764Z,20,30
+System 4,AB123,"{""user1"",""user21""}",AWS,TRUE,2022-04-16T09:21:21.466Z,2022-04-16T09:21:21.466Z,20,30
+System 5,AB12,"{""user13"",""user2""}",web app,FALSE,2022-04-15T04:05:00.000Z,2022-04-15T04:05:00.000Z,12,22
+System 6,AB123,"{""user14"",""user21""}",web app,TRUE,2022-04-16T04:05:00.000Z,2022-04-16T04:05:00.000Z,13,14
+System 7,AB1234,"{""user1"",""user2""}",mobile app,TRUE,2022-04-13T04:05:00.000Z,2022-04-12T04:05:00.000Z,13,14
+System 8,AB123,"{""user11"",""user21""}",mobile app,TRUE,2022-04-03T04:05:00.000Z,2022-04-03T04:05:00.000Z,11,15
+System 9,AB1,"{""user12"",""user22""}",mobile app,FALSE,2022-04-13T05:05:00.000Z,2022-04-12T05:05:00.000Z,13,14
+System 10,AB112,"{""user14"",""user2""}",mobile app,FALSE,2022-04-10T05:05:00.000Z,2022-04-10T05:05:00.000Z,13,14

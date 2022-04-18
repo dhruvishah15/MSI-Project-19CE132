@@ -1,0 +1,109 @@
+<div *ngIf="dataLoaded">
+<div class="container-1">
+    <mat-card>
+       
+        <mat-card-title><b>EDIT PROJECT DETAILS</b></mat-card-title>  
+        <br/>  
+        <mat-card-content>    
+          <form [formGroup]="updateProjectForm">    
+            <table>  
+                <tr>    
+                  <td>   
+                    <mat-form-field appearance="outline" class="demo-full-width">
+                      <mat-label>Project Name</mat-label>
+                      <input matInput formControlName="projectname" placeholder="Placeholder">
+                      
+                    </mat-form-field>  
+                  </td>   
+                  <td>   
+                    <mat-form-field appearance="outline" class="demo-full-width">
+                      <mat-label>Department Code</mat-label>
+                      <input matInput formControlName="deptcode" placeholder="Placeholder">
+                     
+                    </mat-form-field>  
+                  </td>   
+                </tr>  
+                <tr>     
+                  <td colspan="8"> 
+                      <mat-form-field class="example-chip-list" appearance="fill">
+                        <mat-label>Users</mat-label>
+                        <mat-chip-list #chipList aria-label="User selection">
+                          <mat-chip
+                            *ngFor="let user of users"
+                            (removed)="remove(user)">
+                            {{user}}
+                            <button matChipRemove>
+                              <mat-icon>cancel</mat-icon>
+                            </button>
+                          </mat-chip>
+                          <input
+                            placeholder="Users..." #userInput [formControl]="userCtrl"
+                            formControlName="users"
+                            [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                          <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+                            {{user}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>    
+                      
+                  </td>   
+                </tr>         
+              <tr>    
+                <td>    
+                  <mat-form-field appearance="outline" class="demo-full-width">
+                    <mat-label>Product</mat-label>
+                    <input matInput formControlName="product" placeholder="Placeholder">
+                   
+                  </mat-form-field>  
+                </td>   
+                <td> 
+                  <mat-form-field appearance="fill" class="demo-full-width">
+                    <mat-label>Status</mat-label>
+                    <mat-select name="status" formControlName="status" (change)="changeStatus($event)">
+                      <ng-container *ngFor="let stat of status">
+                        <mat-option value="{{stat.key}}">{{stat.statusValue}}</mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+                </td>      
+              </tr>    
+              <tr>   
+                <td>   
+                  <mat-form-field appearance="outline" class="demo-full-width">
+                    <mat-label>CIE Area Id</mat-label>
+                    <input matInput formControlName="cieareaid" placeholder="Placeholder">
+                   
+                  </mat-form-field>  
+                </td>   
+                <td>   
+                  <mat-form-field appearance="outline" class="demo-full-width">
+                    <mat-label>Finance Product Id</mat-label>
+                    <input matInput formControlName="financeproductid" placeholder="Placeholder">
+                  
+                  </mat-form-field>  
+                </td>   
+                  
+              </tr>                 
+            </table>    
+            </form>    
+            
+          </mat-card-content>  
+        <button class="b1" mat-raised-button color="black" (click)="updateProject()">Update</button>   
+        <div *ngIf="showError" class="alert alert-danger alert-dismissible">  
+          {{message}} &nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+        </div> 
+        <div *ngIf="success" class="alert alert-success alert-dismissible">
+          Project Details added successfully. &nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+        </div>
+       
+        <br>
+       
+  </mat-card>   
+</div>
+</div>

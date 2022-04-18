@@ -47,7 +47,7 @@
                             {{user}}
                           </mat-option>
                         </mat-autocomplete>
-                      </mat-form-field>                
+                      </mat-form-field>             
                   </td>   
                 </tr>         
               <tr>    
@@ -91,13 +91,14 @@
             
           </mat-card-content>  
         <button class="b1" mat-raised-button color="black" (click)="onSubmit()" [disabled]="!addProjectForm.valid" >Add</button>   
-        <!-- <mat-error *ngIf="showError">
-          <div class="alert alert-danger alert-dismissible">  
-            {{message}} 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+        <div *ngIf="showError" class="alert alert-danger alert-dismissible">  
+          {{message}} &nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
         </div> 
-        </mat-error> -->
-        <br>
+        <div *ngIf="success" class="alert alert-success alert-dismissible">
+          Project Details added successfully. &nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+        </div>
        
   </mat-card>   
 </div>

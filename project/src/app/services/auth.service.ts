@@ -34,6 +34,23 @@ export class AuthService{
     return sessionStorage.getItem("privilege");
   }
 
+  setName(name:string){
+    return sessionStorage.setItem("name",name);
+  }
+
+  getName(){
+    return sessionStorage.getItem("name");
+  }
+
+  setEmail(email:string){
+    return sessionStorage.setItem("email",email);
+  }
+
+  getEmail(){
+    return sessionStorage.getItem("email");
+  }
+
+
   logout(){
     sessionStorage.removeItem("token");
     this.router.navigate(["/login"]);

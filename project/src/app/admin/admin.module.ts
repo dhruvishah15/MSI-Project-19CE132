@@ -13,16 +13,12 @@ import { MatError } from '@angular/material/form-field';
 import { MatCommonModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { UserRegistrationComponent } from './user-registration/user-registration.component';
-import { ProjectMappingDataComponent } from './project-mapping-data/project-mapping-data.component';
-import { AddProjectMappingDataComponent } from './add-project-mapping-data/add-project-mapping-data.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 @NgModule({
   declarations: [
-  
-  
-    //AddProjectMappingDataComponent
+
   ],
   imports: [
     CommonModule,

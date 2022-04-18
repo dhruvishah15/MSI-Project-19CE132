@@ -6,9 +6,7 @@ const privateKey = '12345#abcde';
 
 class userManagement{
     
-    constructor(){
-
-    }
+    constructor(){ }
 
     register = (request, response) => {
         let {name, email, password, privilege} = request.body;
@@ -20,30 +18,62 @@ class userManagement{
                   // console.log(resp.rows);
                   if (err) {
                      response.status(400).send({message: "database error!"});
+                     process.exit(1);
                   } else if (resp.rows.length >= 1) {
                      response.status(404).send({message: "User already exists"});
-                  }
+                  }else{
+                    let hashed_password = bcrypt.hashSync(password,12);
+                    client.query(
+                    `insert into users (name,email,password,privilege) values($1,$2,$3,$4)`, [name,email, hashed_password, privilege],
+                    (err, resp) => {
+                      // console.log(resp);
+                      if (err) {
+                        console.log(err);
+                        response.status(400).send({message: "Registration Failed. Please try again."});
+                      } else {
+                        console.log("New user inserted");
+                        response.status(200).send({message: "Registration Successful"});
+                      }
+                    });    
                 }
-              );
-
-            let hashed_password = bcrypt.hashSync(password,12);
-            client.query(
-                `insert into users (name,email,password,privilege) values($1,$2,$3,$4)`, [name,email, hashed_password, privilege],
-                (err, resp) => {
-                  // console.log(resp);
-                  if (err) {
-                    console.log(err);
-                    response.status(400).send({message: "Registration Failed. Please try again."});
-                  } else {
-                    console.log("New user inserted");
-                    response.status(200).send({message: "Registration Successful"});
-                  }
-                }
-              );    
+              });
         }else{
             return response.status(401).send({message: "Username or Passsword not found"});
         }
     }
+
+    viewUsers(request, response){
+      client.query(
+        `select id,name,email,privilege from users`, 
+          (err, resp) => {
+            if (err) {
+              console.log(err);
+              response.status(400).send({message: "Error in fetching data."});
+            } else {
+              console.log(resp.rows);
+              console.log("Users data");
+              response.status(200).send({object: resp.rows, message: "Project details fetched successfully!"});
+            }
+          }
+      );  
+    }
+
+    deleteUser(request, response){
+      const id = parseInt(request.params.id);
+      client.query(
+          `delete from users where id = $1`, [id],
+            (err, resp) => {
+              if (err) {
+                console.log(err);
+                response.status(400).send({message: "Error in fetching data."});
+              } else {
+                console.log(resp.rows);
+                response.status(200).send({message: "User deleted successfully!"});
+              }
+            }
+        );  
+      }
+  
 
     verifyToken(request, response, next) {
         if (!request.headers.authorization) {
@@ -77,7 +107,9 @@ class userManagement{
                         expiresIn: "3h",
                       });
                       let privilege = userData.privilege;
-                      response.status(200).send({ message: "Login Successful", token: token, privilege: privilege });
+                      let email = userData.email;
+                      let name = userData.name;
+                      response.status(200).send({ message: "Login Successful", token: token, privilege: privilege, email: email, name: name });
                     } 
                     else {
                       response.status(401).json({ message: "Incorrect Password" });

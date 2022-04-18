@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AfterViewInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,13 +9,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 
 export class AdminDashboardComponent implements OnInit {
-
+  name: any;
+  email: any;
   constructor(private authService: AuthService){}
 
   ngOnInit() {
-   
+    this.name = sessionStorage.getItem('name');
+    this.email = sessionStorage.getItem('email');
   }
-
+  
   logOut(){
     this.authService.logout();
   }

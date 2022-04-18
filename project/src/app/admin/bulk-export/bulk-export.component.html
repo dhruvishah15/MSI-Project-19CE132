@@ -1,0 +1,17 @@
+
+<div class="container-1">
+    <button class="b1" mat-raised-button color="black"type="button" class="button button--primary" (click)="export()">
+        Download Project Mapping Data
+    </button>
+    <hr>
+</div>
+<div class="container-2">
+    <div *ngIf="showError" class="alert alert-danger alert-dismissible">  
+        {{message}} &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+      </div> 
+      <div *ngIf="success" class="alert alert-success alert-dismissible">
+        {{ message }} &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="reloadCurrentPage()"></button>
+    </div>
+</div>

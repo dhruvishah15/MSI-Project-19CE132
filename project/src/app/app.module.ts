@@ -26,9 +26,15 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { RouterModule } from '@angular/router';
 import { UserRegistrationComponent } from './admin/user-registration/user-registration.component';
+import { UsersDataComponent } from './admin/users-data/users-data.component';
 import { ProjectMappingDataComponent } from './admin/project-mapping-data/project-mapping-data.component';
 import { AddProjectMappingDataComponent } from './admin/add-project-mapping-data/add-project-mapping-data.component';
+import { UpdateProjectMappingDataComponent } from './admin/update-project-mapping-data/update-project-mapping-data.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BulkImportComponent } from './admin/bulk-import/bulk-import.component';
+import { BulkExportComponent } from './admin/bulk-export/bulk-export.component';
+import { ViewProjectMappingDataComponent } from './user/view-project-mapping-data/view-project-mapping-data.component';
+
 
 @NgModule({
   declarations: [
@@ -37,8 +43,13 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     UserDashboardComponent, 
     AdminDashboardComponent,
     UserRegistrationComponent,
+    UsersDataComponent,
     ProjectMappingDataComponent,
-    AddProjectMappingDataComponent
+    AddProjectMappingDataComponent,
+    UpdateProjectMappingDataComponent,
+    ViewProjectMappingDataComponent,
+    BulkImportComponent,
+    BulkExportComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,9 +74,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatDividerModule,
     MatPaginatorModule,
     MatChipsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

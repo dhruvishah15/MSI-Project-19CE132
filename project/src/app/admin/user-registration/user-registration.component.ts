@@ -19,13 +19,15 @@ export class UserRegistrationComponent implements OnInit {
 
   name = "User Registration Component";
   registrationForm: FormGroup;
+  action: string = "Dismiss";
   hide = true;
   message: any;
+  success: boolean = false;
   showError: boolean = false;
 
   privileges: Privilege[] = [
-    {key: 1, privilegeValue: '1'},
-    {key: 2, privilegeValue: '2'}
+    {key: 1, privilegeValue: '1 (Editor)'},
+    {key: 2, privilegeValue: '2 (Viewer)'}
   ];
 
   priv: any = [1, 2];
@@ -51,7 +53,9 @@ export class UserRegistrationComponent implements OnInit {
   onSubmit() {
     const {name,email,password,privilege} = this.registrationForm.value;
     this.userService.registerUser({name,email,password,privilege}).subscribe(
-      resp => {
+      res => {
+        this.success = true;
+        this.message = "Registration successful";
         console.log(JSON.stringify(this.registrationForm.value));
       },
       err =>{ 
